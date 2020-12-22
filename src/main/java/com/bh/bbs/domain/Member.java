@@ -13,4 +13,27 @@ public class Member {
     private String memName;
     private String email;
 
+    public int getMemNo() {
+        return memNo;
+    }
+
+    public void setMemNo(int memNo) {
+        this.memNo = memNo;
+    }
+
+    public String getMemName() {
+        return memName;
+    }
+
+    public void setMemName(String memName) {
+        this.memName = memName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
