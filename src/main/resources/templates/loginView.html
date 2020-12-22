@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2>로그인</h2>
+    <form action="/action_page.php">
+        <div class="form-group">
+            <div>이메일</div>
+            <div><input type="text" placeholder="이메일을 입력해주세요" id="memId" name="memId" class="form-control" required></div>
+            <div><a href="findId.me">아이디를 잊으셨나요?</a></div>
+        </div>
+        <div class="form-group">
+            <div>비밀번호</div>
+            <div><input type="password" placeholder="비밀번호를 입력해주세요" id="memPwd" name="memPwd" class="form-control" required></div>
+            <div><a href="findPwdForm.me">비밀번호를 잊으셨나요?</a></div>
+        </div>
+        <table>
+            <tr>
+                <td><button type="submit" class="btn btn-primary">로그인</button></td>
+                <td><a class="btn btn-primary" href="enrollForm.me">회원가입</a></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>
