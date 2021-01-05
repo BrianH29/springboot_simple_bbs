@@ -1,27 +1,39 @@
 package com.bh.bbs.service;
 
 import com.bh.bbs.domain.Member;
+import com.bh.bbs.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
-public interface MemberService {
+@Service
+@Transactional(readOnly = true)
+@RequiredArgsConstructor
+public class MemberService {
 
-    /**
-     * 회원가입
-     */
-    public int join(Member member);
+    public final MemberRepository mr;
 
-    /**
-     * 회원 이메일로 중복 조회
-     */
-    public void validateMember(Member member);
+    @Transactional
+    public Long join(Member member) {
+       validateMember(member);
+        mr.save(member);
+        return member.getId();
+    }
 
-    /**
-     * 전체회원조회
-     */
-    public List<Member> findMembers();
-    public Optional<Member> findOne(int memNo);
+    public void validateMember(Member member){
+        List<Member> result = mr.findByName(member.getName());
+        if(!result.isEmpty()){
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
+        }
+    }
 
+    public Member findOne(Long id) {
+        return mr.findOne(id);
+    }
 
+    public List<Member> findMembers(){
+        return mr.findAll();
+    }
 }

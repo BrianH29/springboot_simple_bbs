@@ -22,11 +22,6 @@ public class homeController {
         return "bbsListView";
     }
 
-    @GetMapping("login.me")
-    public String login(){
-        return "loginView";
-    }
-
     @GetMapping("enrollForm.me")
     public String enrollForm(){
         return "enrollFormView";

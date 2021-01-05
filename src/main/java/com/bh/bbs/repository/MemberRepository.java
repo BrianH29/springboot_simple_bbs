@@ -1,25 +1,35 @@
 package com.bh.bbs.repository;
 
 import com.bh.bbs.domain.Member;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Optional;
 
-public interface MemberRepository {
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.*;
 
-    //회원저장
-    Member save(Member member);
+@Repository
+public class MemberRepository {
 
-    //아이디로 찾기
-    Optional<Member> findById(int memNo);
+    @PersistenceContext
+    private EntityManager em;
 
-    //회원 이름으로 찾기
-    Optional<Member> findByName(String memName);
+    public void save(Member member) {
+        em.persist(member);
+    }
 
-    //회원 전체 출력
-    List<Member> findAll();
+    public Member findOne(Long id) {
+        return em.find(Member.class, id);
+    }
 
-    //이메일 회원 찾기
-    Optional<Member> findByEmail(String email);
+    public List<Member> findByName(String name) {
+        return em.createQuery("select m from Member m where m.name = :name", Member.class)
+                .setParameter("name", name)
+                .getResultList();
+    }
 
+    public List<Member> findAll() {
+        return em.createQuery("select m from Member m", Member.class)
+                .getResultList();
+    }
 }

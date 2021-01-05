@@ -2,38 +2,23 @@ package com.bh.bbs.domain;
 
 import lombok.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+
 @Setter
 @Getter
+@Entity
 @ToString
 public class Member {
 
-    private int memNo;
-    private String memName;
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    private String name;
+    private String pwd;
     private String email;
 
-    public int getMemNo() {
-        return memNo;
-    }
-
-    public void setMemNo(int memNo) {
-        this.memNo = memNo;
-    }
-
-    public String getMemName() {
-        return memName;
-    }
-
-    public void setMemName(String memName) {
-        this.memName = memName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }
